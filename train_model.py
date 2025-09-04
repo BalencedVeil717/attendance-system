@@ -2,19 +2,16 @@ import cv2
 import os
 import numpy as np
 
-# Paths
 dataset_path = "dataset"
 model_path = "face_model.yml"
 
-# Haar cascade for face detection
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
 
-# Prepare training data
 faces = []
 labels = []
-label_map = {}  # Map student name → numeric ID
+label_map = {}
 id_counter = 0
 
 for student_name in os.listdir(dataset_path):
@@ -40,12 +37,12 @@ for student_name in os.listdir(dataset_path):
 
     id_counter += 1
 
-# Train LBPH recognizer
+# LBPH recognizer
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.train(faces, np.array(labels))
 recognizer.save(model_path)
 
-# Save label map for later use
+# Saving label map
 import pickle
 
 with open("labels.pkl", "wb") as f:

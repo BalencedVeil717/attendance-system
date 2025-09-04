@@ -1,14 +1,13 @@
 import cv2
 import pickle
 
-# Load trained model + labels
+# Loading trained model
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read("face_model.yml")
 
 with open("labels.pkl", "rb") as f:
     label_map = pickle.load(f)
 
-# Haar cascade
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
@@ -32,6 +31,5 @@ def recognize_face(image_path):
     return "⚠️ No face detected"
 
 
-# Example
+# Example Run
 print(recognize_face("image.jpg"))
-# hi
