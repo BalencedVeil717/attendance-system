@@ -34,3 +34,4 @@ def recognize_face(image_path):
 
 # Example
 print(recognize_face("image.jpg"))
+# hi
