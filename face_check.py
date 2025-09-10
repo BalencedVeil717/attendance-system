@@ -22,14 +22,13 @@ def check_face(query_image_path, dataset_path="data", enforce_detection=False):
                 enforce_detection=enforce_detection,
             )
             if result["verified"]:
-                # Return student folder name (name of matching student)
                 return os.path.basename(os.path.dirname(img_path))
         except Exception as e:
             print(f"⚠ Could not process {img_path}: {e}")
     return None
 
 
-# Example usage
+
 # if __name__ == "__main__":
 #     match = check_face("student_faces/student1.png")
 #     if match:

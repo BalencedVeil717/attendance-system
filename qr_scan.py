@@ -10,15 +10,13 @@ def scan_qr(qr_image_path):
     decoded = decode(img)
     if decoded:
         data = decoded[0].data.decode("utf-8")
-        # For prototype, QR contains comma-separated values:
-        # "class_id,time_slot,date"
+
         class_id, time_slot, date = data.split(",")
         return {"class_id": class_id, "time_slot": time_slot, "date": date}
     else:
         raise ValueError("No QR code detected!")
 
 
-# # Example usage
 # if __name__ == "__main__":
 #     qr_data = scan_qr("qr_codes/class1_qr.png")
 #     print("QR Data:", qr_data)
