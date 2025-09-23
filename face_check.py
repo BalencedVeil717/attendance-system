@@ -1,3 +1,5 @@
+import warnings
+warnings.filterwarnings("ignore")
 from deepface import DeepFace
 import os
 
